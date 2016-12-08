@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: blacklists
+#
+#  id         :integer          not null, primary key
+#  domain     :string
+#  message    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  domain: MyString
+  message: MyString
+
+two:
+  domain: MyString
+  message: MyString
