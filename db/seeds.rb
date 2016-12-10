@@ -1,10 +1,10 @@
-Lens.create [
-  {name: 'Real Or Satire'},
-  {name: 'Snopes'},
-  {name: 'Politifact'}
+Lens.create! [
+  {name: 'Real Or Satire', password: 'password'},
+  {name: 'Snopes', password: 'password'},
+  {name: 'Politifact', password: 'password'}
 ]
 
-Domain.create [
+Domain.create! [
   {name: 'realnewsrightnow.com'},
   {name: 'motivatornews.com'},
   {name: 'thenationalsun.com'},
@@ -16,7 +16,7 @@ Domain.create [
 ]
 
 # Real Or Satire
-Lens.find(1).concepts.create [
+Lens.find(1).concepts.create! [
   {
     keywords: ["obama", "pledge", "allegiance"],
     message: "Obama never banned the pledge. This story is a hoax."
@@ -24,7 +24,7 @@ Lens.find(1).concepts.create [
 ]
 
 # Real Or Satire
-Lens.find(1).blacklists.create [
+Lens.find(1).blacklists.create! [
   {
     domain_id: 1,
     message: "Anyone who knows a bit of journalism history — or has perhaps an unhealthy obsession with Hayden Christensen — would catch the \"Stephen Glass\" reference. So winning an award with the name Stephen Glass Distinction in Journalistic Integrity is basically admitting that you’re making shit up"
@@ -53,7 +53,7 @@ Lens.find(1).blacklists.create [
 ]
 
   # Snopes
-Lens.find(2).blacklists.create [
+Lens.find(2).blacklists.create! [
   {
     domain_id: 4,
     message: "This is not the real ABC news. They are trolling you."
