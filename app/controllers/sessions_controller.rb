@@ -7,8 +7,10 @@ class SessionsController < ApplicationController
       strong_params[:password]
     )
     if lens
-      session[:session_token] = lens.session_token
-      render json: { success: true }
+      response.headers["Authorization"] = lens.session_token
+      render json: {
+        success: true,
+      }
     else
       render json: {
         success: false,
@@ -21,7 +23,6 @@ class SessionsController < ApplicationController
   def destroy
     if current_lens
       current_lens.reset_session_token!
-      session[:session_token] = nil
     end
     render json: { success: true }
   end

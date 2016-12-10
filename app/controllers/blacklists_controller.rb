@@ -1,4 +1,6 @@
 class BlacklistsController < ApplicationController
+  before_action :ensure_loginum
+
   def create
     domain = Domain.find_by_url(strong_params[:url]) ||
              Domain.new(name: strong_params[:url])

@@ -9,6 +9,8 @@ class Lens < ApplicationRecord
     through: :blacklists,
     source: :domain
 
+  # has_secure_password
+
   before_validation :ensure_session_token!
 
   def self.find_by_credentials(name, password)
@@ -25,15 +27,15 @@ class Lens < ApplicationRecord
     self.session_token = SecureRandom.urlsafe_base64(128)
   end
 
-  private
-
   def has_password?(password)
-    bc_obj = BCrypt::Password.new(self.password)
+    bc_obj = BCrypt::Password.new(self.password_digest)
     bc_obj.is_password?(password)
   end
 
+  private
+
   def ensure_session_token!
-    self.session_token ||= SecureRandom.urlsafe_base64(128)
+    self.session_token ||= SecureRandom.urlsafe_base64(64)
   end
 
 end

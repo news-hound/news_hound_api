@@ -1,4 +1,6 @@
 class ConceptsController < ApplicationController
+  before_action :ensure_login
+
   def create
     concept = Concept.new(
       keywords: params[:keywords],
