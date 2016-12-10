@@ -10,23 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205012110) do
+ActiveRecord::Schema.define(version: 20161208235539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "blacklists", force: :cascade do |t|
-    t.string   "domain"
-    t.string   "message"
-    t.integer  "lens_id"
+    t.integer  "domain_id",  null: false
+    t.integer  "lens_id",    null: false
+    t.string   "message",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["domain"], name: "index_blacklists_on_domain", unique: true, using: :btree
+    t.index ["domain_id", "lens_id"], name: "index_blacklists_on_domain_id_and_lens_id", unique: true, using: :btree
+    t.index ["domain_id"], name: "index_blacklists_on_domain_id", using: :btree
     t.index ["lens_id"], name: "index_blacklists_on_lens_id", using: :btree
   end
 
+  create_table "concepts", force: :cascade do |t|
+    t.string   "keywords",   default: [], null: false, array: true
+    t.string   "message",                 null: false
+    t.integer  "lens_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "domains", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_domains_on_name", unique: true, using: :btree
+  end
+
   create_table "lenses", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_lenses_on_name", unique: true, using: :btree

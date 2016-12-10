@@ -9,6 +9,7 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'http'
 gem 'figaro'
+gem 'require_all'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

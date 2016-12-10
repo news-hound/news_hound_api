@@ -1,4 +1,6 @@
 
+require_relative 'util/fetch'
+
 module ArticleContent
   extend Fetch
 

@@ -1,3 +1,5 @@
+require_relative '../util/fetch'
+
 module WebOfTrust
   extend Fetch
 
