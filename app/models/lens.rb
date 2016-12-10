@@ -21,12 +21,16 @@ class Lens < ApplicationRecord
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  def reset_session_token!
+    self.session_token = SecureRandom.urlsafe_base64(128)
+  end
+
+  private
+
   def has_password?(password)
     bc_obj = BCrypt::Password.new(self.password)
     bc_obj.is_password?(password)
   end
-
-  private
 
   def ensure_session_token!
     self.session_token ||= SecureRandom.urlsafe_base64(128)

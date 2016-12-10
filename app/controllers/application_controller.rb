@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
 
   def current_lens
-    Lens.first
+    @cl ||= Lens.find_by(session_token: session[:session_token])
   end
 end
