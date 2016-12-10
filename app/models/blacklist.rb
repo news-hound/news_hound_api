@@ -10,8 +10,9 @@
 #
 
 class Blacklist < ApplicationRecord
-  validates :domain_id, :lens_id, :message, presence: true
+  validates :domain, :lens_id, :message, presence: true
 
   belongs_to :lens
   belongs_to :domain
+
 end
