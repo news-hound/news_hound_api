@@ -1,24 +1,18 @@
-# README
+Welcome to the Veriscope Api!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation instructions
+  
+  0. Clone repo
 
-Things you may want to cover:
+### Starting the Rails Server
 
-* Ruby version
+  0. `bundle install`
+  0. `bundle exec rails db:setup`
+  0. `bundle exec rails s`
 
-* System dependencies
+### Setting up the https proxy
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  0. `npm install`
+  0. `npm run proxy`
+  0. c/p this into chrome: "chrome://flags/#allow-insecure-localhost"
+  0. Click "Enable"
