@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
   def current_lens
-    token = request.headers["Authorization"]
+    token = request.headers['Authorization']
     @cl ||= Lens.find_by(session_token: token)
   end
 

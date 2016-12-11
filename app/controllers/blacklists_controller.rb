@@ -1,5 +1,5 @@
 class BlacklistsController < ApplicationController
-  before_action :ensure_loginum
+  before_action :ensure_login
 
   def create
     domain = Domain.find_by_url(strong_params[:url]) ||
@@ -22,6 +22,9 @@ class BlacklistsController < ApplicationController
   private
 
   def strong_params
-    params.require(:blacklist).permit(:url, :message)
+    {
+      url: params[:article_url],
+      message: params[:message]
+    }
   end
 end

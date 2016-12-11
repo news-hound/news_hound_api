@@ -24,7 +24,9 @@ class Lens < ApplicationRecord
   end
 
   def reset_session_token!
-    self.session_token = SecureRandom.urlsafe_base64(128)
+    self.session_token = SecureRandom.urlsafe_base64(64)
+    self.save!
+    self.session_token
   end
 
   def has_password?(password)

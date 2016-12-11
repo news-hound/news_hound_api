@@ -1,15 +1,22 @@
 class SessionsController < ApplicationController
 
+  # valid session_token?
+  def show
+    success = !!current_lens
+    render json: { success: success }
+  end
+
   # log in
   def create
+    # debugger
     lens = Lens.find_by_credentials(
       strong_params[:name],
       strong_params[:password]
     )
     if lens
-      response.headers["Authorization"] = lens.session_token
       render json: {
-        success: true,
+        sessionToken: lens.reset_session_token!,
+        success: true
       }
     else
       render json: {

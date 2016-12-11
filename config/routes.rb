@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :blacklists, only: [:create]
   resources :concepts, only: [:create]
-  resource :session, only: [:create, :destroy]
+  resource :session, only: [:create, :destroy, :show]
 end
