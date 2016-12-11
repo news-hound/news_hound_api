@@ -6,6 +6,8 @@ module ContactEmail
 
   def self.evaluate(article)
     if PUBLIC_EMAIL_DOMAINS.any? do |domain|
+        # TODO fix this bug
+        break unless ['whois']['email']
         article['whois']['email'].ends_with?(domain)
       end
       name = article['whois']['name']

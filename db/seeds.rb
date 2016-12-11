@@ -43,7 +43,6 @@ Lens.find(1).blacklists.create! [
     domain_id: 1,
     message: "Anyone who knows a bit of journalism history — or has perhaps an unhealthy obsession with Hayden Christensen — would catch the \"Stephen Glass\" reference. So winning an award with the name Stephen Glass Distinction in Journalistic Integrity is basically admitting that you’re making shit up"
   }, {
-    rebuttal_id: nil,
     domain_id: 2,
     message: "Motivator News was started by the same fella (Paul Horner) who started the satirical news site National Report"
   }, {
@@ -55,19 +54,15 @@ Lens.find(1).blacklists.create! [
     domain_id: 4,
     message: "On their About page, they have the address and phone number for the Westboro Baptist Church hatemongers, which we find deliciously funny"
   }, {
-    rebuttal_id: nil,
     domain_id: 5,
     message: "Their own disclaimer: National Report is a news and political satire web publication, which may or may not use real names, often in semi-real or mostly fictitious ways"
   }, {
-    rebuttal_id: nil,
     domain_id: 6,
     message: "Their own disclaimer: All characters appearing in the articles in this website – even those based on real people – are entirely fictional"
   }, {
-    rebuttal_id: nil,
     domain_id: 7,
     message: "Their own disclaimer: Empire News is a satirical and entertainment website"
   }, {
-    rebuttal_id: nil,
     domain_id: 8,
     message: "A clearly satirical site"
   }
