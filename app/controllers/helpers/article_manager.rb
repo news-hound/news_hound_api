@@ -29,7 +29,7 @@ class ArticleManager
       }
 
       [blacklist_scan, concept_scan, ai_scan].each do |scan|
-        result[:score] = scan[:score] / 2 if scan[:score]
+        result[:score] += scan[:score] / 2 if scan[:score]
         result[:messages] += scan[:messages]
         zero_out ||= scan[:zero]
       end

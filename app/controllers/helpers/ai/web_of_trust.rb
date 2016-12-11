@@ -24,7 +24,6 @@ module WebOfTrust
     params = API_CONFIG.merge({ hosts: domain + '/' })
 
     result = fetch(ENDPOINT, params)[domain]
-
     { score: score(result), messages: messages(result) }
   end
 
