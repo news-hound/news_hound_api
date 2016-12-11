@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20161211190257) do
     t.index ["domain_id", "lens_id"], name: "index_blacklists_on_domain_id_and_lens_id", unique: true, using: :btree
     t.index ["domain_id"], name: "index_blacklists_on_domain_id", using: :btree
     t.index ["lens_id"], name: "index_blacklists_on_lens_id", using: :btree
-    t.index ["rebuttal_id"], name: "index_blacklists_on_rebuttal_id", using: :btree
   end
 
   create_table "concepts", force: :cascade do |t|
@@ -43,7 +42,6 @@ ActiveRecord::Schema.define(version: 20161211190257) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "rebuttal_id"
-    t.index ["rebuttal_id"], name: "index_concepts_on_rebuttal_id", using: :btree
   end
 
   create_table "domains", force: :cascade do |t|
