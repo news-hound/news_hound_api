@@ -3,7 +3,7 @@ module MisleadingUrl
   DOMAINS = %w(com org net)
   MSG = {
     type: "ai",
-    body: "contains a misleading domain - it may not be the organization you think it is",
+    body: "This site contains a misleading domain - it may not be the organization you think it is",
     author: "News Hound"
   }
 

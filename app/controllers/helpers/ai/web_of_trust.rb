@@ -5,12 +5,12 @@ module WebOfTrust
   extend Fetch
 
   MESSAGES = {
-    "101" => "may contain malware or viruses",
-    "103" => "may be phishing for your information",
-    "104" => "may be a scam",
-    "105" => "may engage in illegal behavior",
-    "201" => "may contain intentionally misleading or unethical claims",
-    "203" => "looks suspicious - it may be trying to trick you"
+    "101" => "This site may contain malware or viruses",
+    "103" => "This site may be phishing for your information",
+    "104" => "This site may be a scam",
+    "105" => "This site may engage in illegal behavior",
+    "201" => "This site may contain intentionally misleading or unethical claims",
+    "203" => "This site looks suspicious - it may be trying to trick you"
   }
 
   ENDPOINT = 'http://api.mywot.com/0.4/public_link_json2'

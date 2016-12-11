@@ -1,6 +1,5 @@
 module ContactEmail
 
-  MESSAGE = "may be operated by a single person, not an organization - this site is opperated by "
   PUBLIC_EMAIL_DOMAINS = %w(gmail.com yahoo.com outlook.com inbox.com mail.com
                             yandex.com aim.com aol.com gmx.com)
 
@@ -20,7 +19,7 @@ module ContactEmail
   def self.message(name)
     {
       type: "ai",
-      body: "may be operated by a single person, not an organization - this site is opperated by #{name}",
+      body: "This site may be operated by a single person, not an organization - it is opperated by #{name}",
       author: "News Hound"
     }
   end

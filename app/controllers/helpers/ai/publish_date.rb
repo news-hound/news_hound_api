@@ -18,7 +18,7 @@ module PublishDate
   def self.message(age)
     [{
       type: "ai",
-      body: "is less than #{age} old - most legitimate news sources have been around much longer",
+      body: "This site is less than #{age} old - most legitimate news sources have been around much longer",
       author: "News Hound"
     }]
   end
