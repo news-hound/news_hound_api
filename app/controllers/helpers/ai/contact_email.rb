@@ -9,9 +9,17 @@ module ContactEmail
         article['whois']['email'].ends_with?(domain)
       end
       name = article['whois']['name']
-      { "score" => 0, "messages" => [MESSAGE + name] }
+      { score: 0, messages: [message(name)] }
     else
-      { "score" => 100, "messages" => [] }
+      { score: 100, messages: [] }
     end
+  end
+
+  def self.message(name)
+    {
+      type: "ai",
+      body: "may be operated by a single person, not an organization - this site is opperated by #{name}",
+      author: "News Hound"
+    }
   end
 end

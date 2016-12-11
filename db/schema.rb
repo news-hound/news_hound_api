@@ -10,28 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210193945) do
+ActiveRecord::Schema.define(version: 20161211190257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "blacklists", force: :cascade do |t|
-    t.integer  "domain_id",  null: false
-    t.integer  "lens_id",    null: false
-    t.string   "message",    null: false
+  create_table "articles", force: :cascade do |t|
+    t.string   "url",        null: false
+    t.integer  "lens_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lens_id"], name: "index_articles_on_lens_id", using: :btree
+  end
+
+  create_table "blacklists", force: :cascade do |t|
+    t.integer  "domain_id",   null: false
+    t.integer  "lens_id",     null: false
+    t.string   "message",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "rebuttal_id"
     t.index ["domain_id", "lens_id"], name: "index_blacklists_on_domain_id_and_lens_id", unique: true, using: :btree
     t.index ["domain_id"], name: "index_blacklists_on_domain_id", using: :btree
     t.index ["lens_id"], name: "index_blacklists_on_lens_id", using: :btree
+    t.index ["rebuttal_id"], name: "index_blacklists_on_rebuttal_id", using: :btree
   end
 
   create_table "concepts", force: :cascade do |t|
-    t.string   "keywords",   default: [], null: false, array: true
-    t.string   "message",                 null: false
-    t.integer  "lens_id",                 null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "keywords",    default: [], null: false, array: true
+    t.string   "message",                  null: false
+    t.integer  "lens_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "rebuttal_id"
+    t.index ["rebuttal_id"], name: "index_concepts_on_rebuttal_id", using: :btree
   end
 
   create_table "domains", force: :cascade do |t|

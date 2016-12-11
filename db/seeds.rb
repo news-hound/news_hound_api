@@ -4,6 +4,19 @@ Lens.create! [
   {name: 'Politifact', password: 'password'}
 ]
 
+Article.create! [
+  {
+    url: "http://realorsatire.com/realnewsrightnow-com/",
+    lens_id: 1
+  }, {
+    url: "http://realorsatire.com/thenationalsun-com/",
+    lens_id: 1
+  }, {
+    url: "http://realorsatire.com/abcnews-com-co/",
+    lens_id: 1
+  }
+]
+
 Domain.create! [
   {name: 'realnewsrightnow.com'},
   {name: 'motivatornews.com'},
@@ -26,15 +39,18 @@ Lens.find(1).concepts.create! [
 # Real Or Satire
 Lens.find(1).blacklists.create! [
   {
+    rebuttal_id: 1,
     domain_id: 1,
     message: "Anyone who knows a bit of journalism history — or has perhaps an unhealthy obsession with Hayden Christensen — would catch the \"Stephen Glass\" reference. So winning an award with the name Stephen Glass Distinction in Journalistic Integrity is basically admitting that you’re making shit up"
   }, {
     domain_id: 2,
     message: "Motivator News was started by the same fella (Paul Horner) who started the satirical news site National Report"
   }, {
+    rebuttal_id: 2,
     domain_id: 3,
     message: "Their own disclaimer: The National Sun is a news satire and parody publication. All articles contained within this website, however similar to real events, are fictitious"
   }, {
+    rebuttal_id: 3,
     domain_id: 4,
     message: "On their About page, they have the address and phone number for the Westboro Baptist Church hatemongers, which we find deliciously funny"
   }, {

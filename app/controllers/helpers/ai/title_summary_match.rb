@@ -1,6 +1,10 @@
 module TitleSummaryMatch
 
-  MESSAGE = "The article's title doesn't seem to match it's content"
+  MESSAGE = {
+    type: "ai",
+    body: "The article's title doesn't seem to match it's content",
+    author: "News Hound"
+  };
 
   def self.evaluate(article)
     title = article['title'].downcase
@@ -18,9 +22,9 @@ module TitleSummaryMatch
     score = score.to_i
 
     if score < 100
-      { "score" => score, "messages" => [MESSAGE] }
+      { score: score, messages: [MESSAGE] }
     else
-      { "score" => 100, "messages" => [] }
+      { score: 100, messages: [] }
     end
   end
 end

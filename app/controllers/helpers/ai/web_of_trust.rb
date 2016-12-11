@@ -25,12 +25,18 @@ module WebOfTrust
 
     result = fetch(ENDPOINT, params)[domain]
 
-    { "score" => score(result), "messages" => messages(result) }
+    { score: score(result), messages: messages(result) }
   end
 
   def self.messages(result)
     messages = result["categories"] || []
-    messages.map { |k, _| MESSAGES[k] }.compact
+    messages.map { |k, _| MESSAGES[k] }.compact.map do |msg|
+      {
+        type: "ai",
+        body: msg,
+        author: "News Hound"
+      }
+    end
   end
 
   def self.score(result)

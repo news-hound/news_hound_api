@@ -1,7 +1,7 @@
 module BlacklistScan
 
   def blacklist_scan
-    return {blacklists: []} if @lens_ids.empty?
+    return { messages: [], zero: false } if @lens_ids.empty?
 
     matches = Blacklist
             .where(lens_id: @lens_ids)
@@ -9,15 +9,17 @@ module BlacklistScan
             .where(domains: {name: @article['domain']})
             .includes(:lens)
 
-    blacklists = matches.reduce([]) do |collection, blacklist|
+    messages = matches.reduce([]) do |collection, blacklist|
       collection + [{
         id: blacklist.lens.id,
-        name: blacklist.lens.name,
-        message: blacklist.message
+        type: "blacklist",
+        body: blacklist.message,
+        author: blacklist.lens.name,
+        reference: blacklist.rebuttal.try(:url) #rebuttal might not exist
       }]
     end
 
-    {blacklists: blacklists}
+    { messages: messages, zero: !messages.empty? }
   end
 
 end

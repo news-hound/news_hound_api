@@ -13,6 +13,9 @@ class Blacklist < ApplicationRecord
   validates :domain, :lens_id, :message, presence: true
 
   belongs_to :lens
-  belongs_to :domain
+  belongs_to :domain, autosave: true
+  belongs_to :rebuttal,
+    foreign_key: :rebuttal_id,
+    class_name: :Article
 
 end

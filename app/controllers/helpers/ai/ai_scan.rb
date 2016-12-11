@@ -14,14 +14,14 @@ module AiScan
     return {score: 100, messages: []} unless @ai
 
     WhoIs.addContent!(@article)
-    ai_result = {"score" => 0, "messages" => []}
+    ai_result = {score: 0, messages: []}
 
     VERIFICATIONS.each do |mod|
       evaluation = mod.evaluate(@article)
-      ai_result["score"] += evaluation["score"] / VERIFICATIONS.length
-      ai_result["messages"] += evaluation["messages"]
+      ai_result[:score] += evaluation[:score] / VERIFICATIONS.length
+      ai_result[:messages] += evaluation[:messages]
     end
 
-    {ai: ai_result}
+    ai_result
   end
 end

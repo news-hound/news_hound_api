@@ -8,7 +8,7 @@ class BlacklistsController < ApplicationController
     bl = Blacklist.new(message: strong_params[:message])
     bl.domain = domain
     bl.lens = current_lens
-
+    debugger
     if bl.save
       render json: {success: true}
     else
@@ -23,7 +23,7 @@ class BlacklistsController < ApplicationController
 
   def strong_params
     {
-      url: params[:article_url],
+      url: params[:domain],
       message: params[:message]
     }
   end

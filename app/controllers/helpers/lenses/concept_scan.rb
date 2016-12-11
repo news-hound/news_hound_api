@@ -1,21 +1,28 @@
 module ConceptScan
 
   def concept_scan
-    return {concepts: []} if @lens_ids.empty?
+    return {messages: []} if @lens_ids.empty?
 
     matches = Concept
       .where("keywords <@ ARRAY[?]::varchar[]", @article["keywords"])
       .where(lens_id: @lens_ids)
       .includes(:lens)
 
-    concepts = matches.reduce([]) do |collection, concept|
+    @messages = matches.reduce([]) do |collection, concept|
+      # TODO! add reference capability for concepts
       collection + [{
         id: concept.lens.id,
-        name: concept.lens.name,
-        message: concept.message
+        type: "concept",
+        body: concept.message,
+        author: concept.lens.name,
+        reference: nil
       }]
     end
 
-    {concepts: concepts}
+    {messages: @messages, score: score}
+  end
+
+  def score
+    100 - (@messages.length * 20)
   end
 end
