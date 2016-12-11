@@ -7,6 +7,9 @@ module Fetch
     json = JSON.parse(response.to_s)
 
     if response.status != 200 || json['status'] == 'ERROR'
+      puts "\nFETCH DATA:"
+      puts json
+      puts "\n"
       raise FetchError, "unable to fetch from #{api}"
     end
 

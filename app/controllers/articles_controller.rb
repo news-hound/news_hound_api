@@ -20,8 +20,10 @@ class ArticlesController < ApplicationController
   private
 
   def strong_params
+    url = URI.unescape(params[:url])
+    url = Embiggen::URI(url).expand.to_s
     {
-      url: params[:url],
+      url: url,
       lenses: params[:lenses],
       ai: params[:ai]
     }.reject { |k, v| v.nil? }
