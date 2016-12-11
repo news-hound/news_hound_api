@@ -1,6 +1,7 @@
 require_relative '../util/fetch'
 
 module WebOfTrust
+  #TODO score to 100 if messages == 0
   extend Fetch
 
   MESSAGES = {
