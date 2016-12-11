@@ -11,7 +11,7 @@ module ConceptScan
     @messages = matches.reduce([]) do |collection, concept|
       # TODO! add reference capability for concepts
       collection + [{
-        id: concept.lens.id,
+        lens_id: concept.lens.id,
         type: "concept",
         body: concept.message,
         author: concept.lens.name,

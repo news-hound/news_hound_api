@@ -11,7 +11,7 @@ module BlacklistScan
 
     messages = matches.reduce([]) do |collection, blacklist|
       collection + [{
-        id: blacklist.lens.id,
+        lens_id: blacklist.lens.id,
         type: "blacklist",
         body: blacklist.message,
         author: blacklist.lens.name,
