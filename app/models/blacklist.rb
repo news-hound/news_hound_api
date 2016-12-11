@@ -16,6 +16,7 @@ class Blacklist < ApplicationRecord
   belongs_to :domain, autosave: true
   belongs_to :rebuttal,
     foreign_key: :rebuttal_id,
-    class_name: :Article
+    class_name: :Article,
+    optional: true
 
 end
