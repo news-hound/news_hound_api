@@ -1,7 +1,11 @@
+# 'snopes' => 1
+# real or satire => 2
+# politicafe => 3
+
 Lens.create! [
-  {name: 'Real Or Satire', password: 'password'},
   {name: 'Snopes', password: 'password'},
-  {name: 'Politifact', password: 'password'}
+  {name: 'Real Or Satire', password: 'password'},
+  {name: 'Politicaft', password: 'password'}
 ]
 
 Article.create! [
@@ -28,15 +32,18 @@ Domain.create! [
   {name: '16inchcity.com'}
 ]
 
-# Real Or Satire
+# Snopes
 Lens.find(1).concepts.create! [
   {
     keywords: ["obama", "pledge", "allegiance"],
     message: "Obama never banned the pledge. This story is a hoax."
+  }, {
+    keywords: ["hillary", "fbi"],
+    message: "This story is a hoax. It has no real sources."
   }
 ]
 
-# Real Or Satire
+# Snopes
 Lens.find(1).blacklists.create! [
   {
     rebuttal_id: 1,
@@ -68,7 +75,7 @@ Lens.find(1).blacklists.create! [
   }
 ]
 
-  # Snopes
+  # Real or Satire
 Lens.find(2).blacklists.create! [
   {
     domain_id: 4,
