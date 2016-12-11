@@ -16,7 +16,7 @@ Article.create! [
     url: "http://realorsatire.com/thenationalsun-com/",
     lens_id: 1
   }, {
-    url: "http://realorsatire.com/abcnews-com-co/",
+    url: "http://www.snopes.com/obama-signs-executive-order-declaring-investigation-into-election-results/",
     lens_id: 1
   }
 ]
