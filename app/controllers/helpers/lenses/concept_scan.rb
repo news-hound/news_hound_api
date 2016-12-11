@@ -1,7 +1,7 @@
 module ConceptScan
 
   def concept_scan
-    return {messages: [], score: 100} if @lens_ids.empty?
+    return {messages: []} if @lens_ids.empty?
 
     matches = Concept
       .where("keywords <@ ARRAY[?]::varchar[]", @article["keywords"])

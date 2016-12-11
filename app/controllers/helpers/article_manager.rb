@@ -16,11 +16,12 @@ class ArticleManager
   end
 
   def evaluate
-    # TODO clean please :)
+    # TODO clean please :) score calculation is finiky
     begin
       @article = ArticleContent.extract(@url)
       return {} if !@url || (@lens_ids.empty? && !@ai)
       zero_out = false
+      score_count = 0
 
       result = {
         success: true,
@@ -29,11 +30,13 @@ class ArticleManager
       }
 
       [blacklist_scan, concept_scan, ai_scan].each do |scan|
-        result[:score] += scan[:score] / 2 if scan[:score]
+        result[:score] += scan[:score] || 0
+        score_count += 1 if scan[:score]
         result[:messages] += scan[:messages]
         zero_out ||= scan[:zero]
       end
 
+      result[:score] /= score_count
       result[:score] = 0 if zero_out
 
       result
